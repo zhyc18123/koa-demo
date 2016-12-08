@@ -16,15 +16,14 @@ module.exports = {
 
     index: function* (aid) {
         //yield this.test();
-       
+        var provName =  aid.ctx.state.vars.location.provName;
         var rootData = {
             provName:provName,
             json:{
-                score:score
+                score:123
             }
         };
 
-        Util.extend(rootData.json, score);
 
         return yield aid.ctx.render("index",rootData);
     },

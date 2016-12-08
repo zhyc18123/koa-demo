@@ -65,7 +65,7 @@ module.exports = {
     loadPageVars:function(app){
         //static url do not need to use this middleware
         app.use(function*(next){
-            var userInfo = this.session['userInfo']||{uid:0};
+            var userInfo = {uid:0}; //this.session['userInfo']||{uid:0};
             var vars = {
                 _resource_version: webConf._resource_version,
                 _webConf_debug:webConf.debug,
