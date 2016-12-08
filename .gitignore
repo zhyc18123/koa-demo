@@ -1,0 +1,9 @@
+node_modules/
+tar/
+logs/
+bin/devlib
+locConfig.js
+.DS_Store
+*.gz
+*.log
+.idea

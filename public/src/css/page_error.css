@@ -1,0 +1,12 @@
+/* @mixin detailsbg($x: 0,$y: 0 , $repeat: no-repeat, $OnlyPosition:false){ @include ipinBg("img/details.png?v="+$ver,$x,$y,$repeat,$OnlyPosition)
+} */
+body { background: #fff; }
+
+.page_error { position: relative; margin: 109px auto 120px; width: 738px; height: 404px; border: 1px solid #E2E2E4; border-radius: 2px; }
+.page_error .error_cBox { padding: 70px 0 45px; text-align: center; }
+.page_error .btn { display: block; margin: 0 auto; width: 118px; height: 38px; line-height: 38px; border: 1px solid  #2B8BFF; border-radius: 3px; background: #4499FF; color: #fff; font-size: 14px; text-align: center; }
+.page_error .btn:hover { background: #2B8BFF; }
+.page_error .btn .r_icon { display: inline-block; margin-top: -2px; margin-left: 6px; width: 15px; height: 15px; line-height: 1; vertical-align: middle; background-image: url(img/page_error.png?v=186); background-position:-0px -0px; }
+.page_error .title_box { position: absolute; left: 50%; margin-left: -149px; top: -15px; width: 298px; height: 30px; color: #333; line-height: 1; font-size: 30px; text-align: center; background: #fff url(/images/page_error/title_bgbox.png) center center no-repeat; z-index: 1; }
+.page_error .btm1 { position: absolute; bottom: -12px; left: 50%; margin-left: -344px; width: 688px; height: 10px; border: 1px solid #E2E2E4; border-radius: 2px; background: #fff; }
+.page_error .btm2 { position: absolute; bottom: -7px; left: 50%; margin-left: -359px; width: 718px; height: 5px; border: 1px solid #E2E2E4; border-radius: 2px; background: #fff; z-index: 1; }

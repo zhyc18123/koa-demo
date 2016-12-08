@@ -1,0 +1,10 @@
+#!/bin/sh
+
+proname="wanmeizhiyuan.com"
+
+
+echo "常规迭代增量包,开始打包..."
+selfpath=$(cd "$(dirname "$0")"; pwd)
+cd $selfpath/../
+tar -cjf  tar/adding.$proname.tar.gz  middleware/ utils/ router/ controller/ provider/ views/ public/ > /dev/null
+echo "项目打包完成 tar/adding.$proname.tar.gz"

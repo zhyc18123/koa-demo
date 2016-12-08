@@ -1,0 +1,29 @@
+<%
+    var data = locals;
+%>
+
+<!doctype html>
+<html>
+<head>
+    <%- include ../components/loadjs -%>
+    <link rel="stylesheet" href="/css/erro.css?v=<%=data.vars._resource_version%>"/>
+    <title>服务器繁忙</title>
+</head>
+
+<body>
+    <%- include ../components/head -%>
+    <div class="erro">
+        <div class="content">
+            <div class="page_error">
+                <div class="error_cBox">
+                    <img alt="" src="/images/page_error/pge500.png">
+                </div>
+                <div class="title_box">喔嚯，页面挂啦！</div>
+                <div class="btm1"></div>
+                <div class="btm2"></div> 
+            </div>
+        </div>
+    </div>
+    <%- include ../components/foot -%>
+</body>
+</html>

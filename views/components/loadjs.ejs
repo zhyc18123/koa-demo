@@ -1,0 +1,49 @@
+<meta charset="UTF-8">    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit" />
+<meta http-equiv="Window-target" content="_top">
+<meta http-equiv="Cache-Control" content="no-transform ">
+
+<!--todo
+<link rel="canonical" href="http://www.wmzy.com/XXX" />
+-->
+
+<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/font/ipin-ico.css?v=<%=data.vars._resource_version%>">
+<link rel="stylesheet" href="/css/common.css?v=<%=data.vars._resource_version%>"/>
+<link rel="stylesheet" href="/css/base.css?v=<%=data.vars._resource_version%>"/>
+
+
+<!--某些低端IE8在使用es5-shim是会导致avalon出BUG,scoreUI控件报错,这些浏览器一般在未唤出调试器时console也不存在-->
+<!--
+< script type="text/javascript" src="/js/shim/html5shiv.js">< /script>
+< script type="text/javascript" src="/js/shim/es5-shim.min.js">< /script>
+< script type="text/javascript" src="/js/shim/es5-sham.min.js">< /script>
+< script type="text/javascript" src="/js/shim/controll-polyfill.js">< /script>
+-->
+
+
+<script>
+	window._webConf_debug = window.__debug = <%=data.vars._webConf_debug%>;
+	window._resource_version = <%=data.vars._resource_version%>;
+	var PageData = {};
+	<%if(data.json){%>
+		try{
+			PageData = (<%-JSON.stringify(data.json)%>)||{};
+		}catch(err){
+			console&&console.log("PageData error:",err);
+		}
+	<%}%>
+	
+	if(Object.prototype.toString.call(PageData)!='[object Object]'){
+		PageData = {};
+	}
+	PageData.uid = PageData.uid*1||<%=data.vars.authorization.userInfo.uid%>;
+	PageData.isLogin = PageData.isLogin||<%=data.vars.authorization.isLogin%>;
+	
+</script>
+<script src="/js/requirejs.min.js"></script>
+<script src="/js/require.config.js"></script>
+
+
+

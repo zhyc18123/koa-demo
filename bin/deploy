@@ -1,0 +1,115 @@
+#!/bin/sh
+
+# Colors
+COLOR_OFF="\033[0m"   # unsets color to term fg color
+RED="\033[0;31m"      # red
+GREEN="\033[0;32m"    # green
+YELLOW="\033[0;33m"   # yellow
+MAGENTA="\033[0;35m"  # magenta
+CYAN="\033[0;36m"     # cyan
+
+# staging:
+DEPLOY_USER="ipin"
+STAGING_SERVER="192.168.1.30"
+STAGING_SERVER_PORT=8080
+PROJECT_NAME="gaokao"
+STAGING_DIR="~/node/wanmeizhiyuan.cn"
+STAGING_SSH_PORT=22
+
+# preview:
+PREVIEW_USER="ipin"
+PREVIEW_SERVER="183.56.160.174"
+PREVIEW_DIR="/home/ubuntu/node/college"
+PREVIEW_SSH_PORT=22
+PRODUCTION_DIR="/apps/production/example.com"
+PRODUCTION_SSH_PORT=22
+
+
+case $1 in
+  upload)
+    ./bin/tar_top
+    echo '删除link'
+    ./bin/linkdev rm
+    echo "\n${GREEN}DEPLOYING APP TO STAGING${COLOR_OFF}\n"
+    scp ${PROJECT_NAME}.tar.gz ipin@$STAGING_SERVER:$STAGING_DIR
+    echo "\n${GREEN} login remote  ${COLOR_OFF}\n"
+    ssh $DEPLOY_USER@$STAGING_SERVER "cd $STAGING_DIR &&\
+    echo "\n${GREEN} extrac files ${COLOR_OFF}\n"
+    tar -xvf  ${PROJECT_NAME}.tar.gz
+    "
+    ;;
+  staging)
+    ./bin/tar_top
+    echo '删除link'
+    ./bin/linkdev rm
+    echo "\n${GREEN}DEPLOYING APP TO STAGING${COLOR_OFF}\n"
+    scp ${PROJECT_NAME}.tar.gz ipin@$STAGING_SERVER:$STAGING_DIR
+    echo "\n${GREEN} login remote  ${COLOR_OFF}\n"
+    nohup ssh $DEPLOY_USER@$STAGING_SERVER "cd $STAGING_DIR &&\
+    echo "\n${GREEN} extrac files ${COLOR_OFF}\n"
+    tar -xvf  ${PROJECT_NAME}.tar.gz &&\
+    echo "\n${GREEN} kill process ${COLOR_OFF}\n"
+    fuser -k ${STAGING_SERVER_PORT}/tcp &&\
+    echo "\n${GREEN} start server ${COLOR_OFF}\n"
+    ./bin/run
+    " > ./logs/out.log &
+    echo "\n${GREEN} 发布好了 ${COLOR_OFF}\n"
+    tail -f ./logs/out.log
+    ;;
+  preview)
+    ./bin/tar
+    echo "\n${GREEN}DEPLOYING APP TO PRODUCTION${COLOR_OFF}\n"
+    scp tar/college.tar.gz ipin@$PREVIEW_SERVER:$PREVIEW_DIR
+    echo "\n${GREEN} login remote  ${COLOR_OFF}\n"
+    ssh $PREVIEW_USER@$PREVIEW_SERVER "cd $PREVIEW_DIR &&\
+    echo "\n${GREEN} extrac files ${COLOR_OFF}\n"
+    tar -xvf  college.tar.gz &&\
+    echo "\n${GREEN} kill process ${COLOR_OFF}\n"
+    fuser -k 5054/tcp &&\
+    echo "\n${GREEN} start server ${COLOR_OFF}\n"
+    ./bin/run
+    exit
+    "
+    ;;
+  test)
+    ssh $DEPLOY_USER@$STAGING_SERVER "cd $STAGING_DIR &&\
+    screen -S college -dr || screen -S college
+    echo "\n${GREEN} kill process ${COLOR_OFF}\n"
+    fuser -k 5054/tcp
+    echo "\n${GREEN} start server ${COLOR_OFF}\n"
+    ./bin/run
+    exit
+    "
+    ;;
+  production)
+    echo "\n${GREEN}DEPLOYING APP TO PRODUCTION${COLOR_OFF}\n"
+    # Deploys origin/production to production_server
+    old_revision=`git rev-parse origin/production`
+    tag_production
+    new_revision=`git rev-parse origin/production`
+    deploy_production
+    echo "\n${CYAN}APP DEPLOYED!${COLOR_OFF}\n"
+    ;;
+  restart_workers)
+    echo "\n${GREEN}RESTARTING PRODUCTION WORKERS${COLOR_OFF}\n"
+    restart_production_workers
+    echo "\n${CYAN}WORKERS RESTARTED!${COLOR_OFF}\n"
+    ;;
+  current)
+    environment=$2
+    if [ -e $2 ]; then
+      environment="production"
+    fi
+    deployed_commit=`git rev-parse origin/$environment 2>/dev/null`
+    if [[ "$deployed_commit" == *origin/* ]]; then
+      echo "$environment: Nothing deployed"
+    else
+      echo "$environment: Deployed hash $deployed_commit"
+    fi
+    ;;
+  *)
+    echo "USAGE: $0 {staging|production|current|restart_workers}"
+    exit
+    ;;
+esac
+

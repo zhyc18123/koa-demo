@@ -1,0 +1,47 @@
+<%
+    var data = locals;
+%>
+
+<!doctype html>
+<html>
+<head>
+    <%- include ../components/loadjs -%>
+    <link rel="stylesheet" href="/css/erro.css?v=<%=_resource_version%>"/>
+    <title>服务器繁忙</title>
+</head>
+
+<body>
+    <%- include ../components/head -%>
+    <div class="erro">
+        <div class="erro-tips">
+            <p>尊敬的用户：由于目前处于志愿填报的高峰期，使用完美志愿的用户非常多，所以会出现打开缓慢的情况。我们建议您开通VIP，享受专用服务器，免受等待之苦。<a href="/buy/product">［立即开通］</a></p>
+        </div>
+        <div class="content">
+            <div class="page_error">
+                <div class="error_cBox">
+                    <p>当前时段用户激增，完美君体力透支，已崩溃…</p>    
+                    <img alt="" src="/images/erro-bg.png">
+                    <div class="error_cBox_tips">
+                        <p class="sort_bg"><span>你可以</span></p>
+                        <ul>
+                            <li><div class="error_list-txt">避开高峰时段，选择在中午或其他休息时段使用</div><div class="error_cBox_list"><a href="/" class="try-btn">稍后再试</a></div></li>
+                            <li><div class="error_list-txt">开通VIP，享受专用服务器和线路，随时随地流畅体验</div><div class="error_cBox_list"><a href="/buy/product" class="vip-btn">开通VIP</a><p>已是VIP，<a href="javascript:;" class="login-btn">登录&gt;&gt;</a></p></div></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<a href="/" class="btn">回到首页<i class="r_icon"></i></a>-->
+            <div class="title_box">服务器繁忙</div>
+                <!--<div class="btm1"></div>
+                <div class="btm2"></div> -->
+            </div>
+        </div>
+    </div>
+    <%- include ../components/foot -%>
+    <script>
+    $(".error_cBox_tips .login-btn").on("click",function(){
+        $('#login_link').trigger('click');
+    })
+    </script>
+</body>
+</html>
+

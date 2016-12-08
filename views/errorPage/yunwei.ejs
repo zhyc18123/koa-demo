@@ -1,0 +1,32 @@
+<%
+    var data = locals;
+%>
+
+<!doctype html>
+<html>
+<head>
+    <%- include ../components/loadjs -%>
+    <link rel="stylesheet" href="/css/page_error.css?v=<%=data.vars._resource_version%>"/>
+    <title>系统运维中</title>
+</head>
+
+<body>
+    <%- include ../components/head -%>
+    <div class="error">
+        <div class="content">
+            <div class="page_error">
+                <div class="title_box">抱歉，系统运维中</div>
+                <div class="error_cBox">
+                    <img alt="" src="/images/page_error/erro-bg.png" alt="系统运维中">
+                </div>
+                <div style="font-size:18px;margin-top:50px;text-align:center;">预计服务恢复时间：<%=data.vars.yunweiEndTime%></div>
+
+                <div class="btm1"></div>
+                <div class="btm2"></div> 
+            </div>
+        </div>
+
+    </div>
+    <%- include ../components/foot -%>
+</body>
+</html>

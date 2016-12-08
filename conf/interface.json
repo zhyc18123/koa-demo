@@ -1,0 +1,162 @@
+{
+    "title": "wmzy Data API",
+    "version": "1.0.0",
+    "engine": "mockjs",
+    "rulebase": "./conf/interfaceRules/",
+    "defaultInterfaces":{
+        "method":"post",
+        "urls":{
+            "online":"",
+            "publish":"",
+            "test":"http://192.168.1.81:28088/"
+        },
+        "endurl":"data?id="
+    },
+    "interfaces": [
+        {
+            "id": "debuger",
+            "urls": {
+                "online": "",
+                "publish": "",
+                "test": "http://192.168.1.21:28088/trace"
+            },
+            "queryRaw":false
+        },
+        {
+            "id": "test",
+            "status":"mockerr",
+            "urls": {
+                "online": "",
+                "publish": "",
+                "test": "http://192.168.1.21:28088/test"
+            }
+        },
+        {
+            "id": "query_request",
+            "urls": {
+                "online": "",
+                "publish": "",
+                "test": "http://192.168.1.21:28088/query_request"
+            },
+            "queryRaw":false
+        },
+        {
+            "id":"search",
+            "name":"搜索"
+        }
+    ],
+    "group": {
+        "fastAPI":{
+            "text":"高负载时需要保证畅通的接口",
+            "interfacesConfig":{
+                "method":"post",
+                "urls":{
+                    "online":"",
+                    "publish":"",
+                    "test":"http://192.168.1.81:28088/"
+                },
+                "endurl":"data?id="
+            },
+
+            "data":[
+                ["user.validate_token","token验证"]
+            ]
+        },
+
+        "zyb":{
+            "text":"志愿表",
+            "data":[
+                ["zyb.get.zyb_info","志愿表详情"]
+            ]
+        },
+
+
+        "gaokaoRestfulGet":{
+            "text":"资源库接口,URL上的restful参数使用下划线标记：_参数名",
+            "interfacesConfig":{
+                "apiStyle":"restful",
+                "method":"get",
+                "queryRaw": false,
+                "urls":{
+                    "online":"",
+                    "publish":"",
+                    "test":"http://192.168.1.83:8085/gaokao-rest-api-service"
+                },
+                "headers":{
+                    "Content-Type":"application/json"
+                },
+                "dataType": "json"
+            },
+
+            "data":[
+                ["zyb_param.access._uid","志愿表中间参数(志愿表标识)获取"],
+                ["get.short_user_info","支付页面查询用户模糊信息"],
+                ["zhaosheng_info.school","搜索招生学校"],
+                ["zhaosheng_info.major","搜索招生专业信息"]
+            ]
+        },
+
+
+        "search":{
+            "text": "搜索接口",
+            "interfacesConfig":{
+                "apiStyle":"restful",
+                "method":"get",
+                "queryRaw": false,
+                "urls":{
+                    "online":"",
+                    "publish":"",
+                    "test":"http://192.168.1.83:8087/ipin-search-rest-server/"
+                },
+                "headers":{
+                    "Content-Type":"application/json"
+                },
+                "dataType": "json"
+            },
+            "data":[
+                ["search.school","搜索学校"],
+                ["search.major","搜索专业"],
+                ["search.sch_major","搜索学校专业"]
+            ]
+        },
+
+        "strategypost":{
+            "text": "访问次数控制post",
+            "interfacesConfig":{
+                "apiStyle":"restful",
+                "method":"post",
+                "queryRaw": false,
+                "timeout":2000,
+                "urls":{
+                    "online":"",
+                    "publish":"",
+                    "test":"http://192.168.1.83:8092/strategy-service"
+                }
+            },
+            "data":[
+                ["strategy.update","搜索次数自增长"],
+                ["strategy.clear","重置访问次数"]
+            ]
+        },
+
+        "newsflowPost": {
+            "text": "新闻接口",
+            "interfacesConfig":{
+                "apiStyle":"restful",
+                "method":"post",
+                "queryRaw": false,
+                "endurl":"",
+                "urls":{
+                    "online":"",
+                    "publish":"",
+                    "test":"http://192.168.1.30:8078/"
+                },
+                "dataType": "json"
+            },
+            "data": [
+                ["newsflow.comment","发表评论"],
+                ["newsflow.notify","获取评论留言消息队列"]
+            ]
+        }
+    }
+}

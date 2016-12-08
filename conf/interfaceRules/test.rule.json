@@ -1,0 +1,13 @@
+{
+    "request": {
+    	"id":"1234"
+    },
+    "response": {
+        "name|1-2":"test",
+        "msg":"this is mock"
+    },
+    "responseError": {
+        "code": "500",
+        "msg":"mockerr"
+    }
+}

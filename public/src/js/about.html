@@ -1,0 +1,40 @@
+<html>
+<body>
+    <script type="text/javascript">
+    (function(){
+        
+        function hasOwnProperty(o, prop) {
+            if (Object.prototype.hasOwnProperty) {
+                return o.hasOwnProperty(prop);
+            }
+            return typeof o[prop] !== "undefined" &&
+            o.constructor.prototype[prop] !== o[prop];
+        }
+        var r = /^(?:(?:(opener|top|parent|frames\[(?:(?:['"][a-zA-Z\d-_]*['"])|\d+)\]))(?:\.|$))+$/; 
+        var hash = location.hash;
+        var p = {};
+        var h = hash.substr(hash.indexOf('#')+1);
+        if(h){
+            h.indexOf("&") == -1 && (h = unescape(h));
+            h = h.split('&');
+            for(var i=0,len=h.length;i<len;i++){
+                if( h[i].indexOf('=') == -1 ){
+                    if(h[i] != '')  p[h[i]] = "";
+                    continue;
+                }
+                var arr = h[i].split('=');
+                p[arr[0]] = unescape(arr[1]);
+            }
+        }
+        if(hasOwnProperty(p,"target") && hasOwnProperty(p,"method") 
+            && hasOwnProperty(p,"value") && hasOwnProperty(p,"domain") ){
+                if (!r.test(p.target)) {
+                    throw new Error("Invalid target: " + p.target);
+                }
+                var t = eval("parent."+p.target);
+                t.eval(p.method+'("'+p.value+'","'+p.domain+'")');
+        }
+    })();
+    </script>
+</body>
+</html>

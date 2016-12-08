@@ -1,0 +1,6 @@
+User-agent: * 
+Allow:　/
+Disallow: /*？*
+Disallow: /logs
+Disallow: /public/demo 
+

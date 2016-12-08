@@ -1,0 +1,18 @@
+#!/bin/sh
+
+proname="wanmeizhiyuan.com"
+
+echo '删除link'
+./bin/linkdev  rm
+
+echo '获取本地库'
+npm install --loglevel http
+
+echo "开始打包..."
+selfpath=$(cd "$(dirname "$0")"; pwd)
+cd $selfpath/../
+tar -cjf  tar/$proname.tar.gz seo/ bin/ conf/ node_modules/ middleware/ utils/ router/ controller/ provider/ views/ public/ package.json server.js app.js robots.txt > /dev/null
+echo "项目打包完成 tar/$proname.tar.gz"
+
+echo "还原开发本地环境"
+./bin/linkdev 

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ x$1 == x"project" ]; then
+	packname="wanmeizhiyuan.com.tar.gz"
+	echo 'packname-'
+else
+	packname="adding.wanmeizhiyuan.com.tar.gz"
+fi
+
+if [ x$2 == x"publish" ]; then
+	#publish
+    addr="huabiao@183.56.160.174:/home/ubuntu/node/www.wmzy.com_new/"
+else
+	#test
+	addr="ipin@192.168.1.30:/home/ipin/node/wanmeizhiyuan.com/"
+fi
+
+scp ./tar/$packname $addr
+
+echo "finished: scp ./tar/$packname $addr"

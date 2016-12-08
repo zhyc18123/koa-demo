@@ -1,0 +1,36 @@
+{
+  "name": "wanmeizhiyuan",
+  "version": "0.0.1",
+  "description": "wanmeizhiyuan",
+  "main": "server.js",
+  "readme": "",
+  "repository": {},
+  "scripts": {
+    "start": "./bin/run dev"
+  },
+  "dependencies": {
+    "thunkify": "~2.1.1",
+    "koa": "0.18.1",
+    "koa-logger": "1.2.2",
+    "koa-ejs": "2.0.1",
+    "koa-static-cache": "3.1.1",
+    "koa-gzip": "0.1.0",
+    "koa-router": "^5.4.0",
+    "request-params": ">=0.2.2",
+    "request":">=2.67.0",
+    "redis": "~0.10.1",
+    "session-redis": ">=0.0.1",
+    "qr-image":">=3.1.0",
+    "html-pdf":"2.0.1",
+    "nodemailer":">=2.3.0",
+    "lodash": "^4.15.0",
+    "log4js": "^0.6.33",
+    "passthrough-counter": "1.0.0",
+    "node-qqwry": "0.1.0",
+    "modelproxy": "~0.3.5",
+    "web-aid": ">=0.2.3"
+  },
+  "devDependencies": {
+
+  }
+}

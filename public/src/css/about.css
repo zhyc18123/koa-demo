@@ -1,0 +1,75 @@
+/* @mixin detailsbg($x: 0,$y: 0 , $repeat: no-repeat, $OnlyPosition:false){ @include ipinBg("img/details.png?v="+$ver,$x,$y,$repeat,$OnlyPosition)
+} */
+body { background: #fff; }
+
+.about { margin: 40px auto 0; min-height: 400px; width: 1000px; *zoom: 1; }
+.about:before, .about:after { display: table; content: ""; }
+.about:after { clear: both; }
+.about .about-tab { margin-top: 1px; float: left; width: 190px; height: 20px; }
+.about .about-tab ul li a { height: 40px; background: #efefef; width: 190px; display: block; line-height: 40px; text-indent: 20px; border-bottom: 1px solid #e1e1e1; color: #666; }
+.about .about-tab ul li a.last { border-bottom-width: 0px; }
+.about .about-tab ul li a:hover { color: #4499dd; }
+.about .about-tab ul li a.select { background: #fff; border-bottom: #fff; border-left: solid 3px #49d; width: 187px; text-indent: 17px; height: 41px; margin-top: -1px; font-weight: 600; }
+.about .content { float: left; padding-left: 40px; padding-bottom: 100px; width: 770px; color: #666; }
+.about .content h1 { font-size: 24px; line-height: 40px; margin-bottom: 30px; font-weight: bold; }
+.about .content img { vertical-align: middle; }
+
+.about-us ul li { display: block; margin-bottom: 30px; *zoom: 1; }
+.about-us ul li:before, .about-us ul li:after { display: table; content: ""; }
+.about-us ul li:after { clear: both; }
+.about-us ul li .c-l { float: left; width: 110px; }
+.about-us ul li .c-l div { float: left; font-size: 50px; text-align: left; color: #d4d3d3; }
+.about-us ul li .c-l div span { display: block; font-family: Arial; font-size: 25px; }
+.about-us ul li .c-r { float: left; width: 660px; line-height: 24px; }
+.about-us ul li .c-r h2 { font-size: 16px; font-weight: bold; line-height: 24px; }
+.about-us ul li .c-r p { text-indent: 30px; }
+.about-us ul li .c-r div.img-el { width: 100%; margin: 20px 0; }
+
+.join-us { line-height: 24px; color: #333; }
+.join-us h1 { margin-bottom: 20px !important; }
+.join-us ul { margin-left: 40px; list-style-type: decimal; margin-bottom: 15px; }
+.join-us .hd { font-size: 14px; }
+.join-us .join-item { margin-bottom: 20px; }
+.join-us .join-item h2 { font-size: 16px; font-weight: bold; line-height: 40px; height: 40px; width: 700px; background: url("img/repeatX.png?v=186") repeat-x 0 -120px; }
+
+.law { padding-right: 10px; width: 750px !important; }
+.law h1 { line-height: 30px !important; margin-bottom: 0px !important; }
+.law h1 .time { font-size: 14px; color: #999; line-height: 20px; font-weight: normal; }
+.law h2 { font-size: 16px; font-weight: bold; margin-top: 30px; }
+.law h3 { font-size: 14px; line-height: 20px; text-indent: 30px; margin-top: 5px; }
+.law p { line-height: 24px; font-size: 14px; text-indent: 30px; }
+.law div.img-el { width: 100%; margin: 20px 0; }
+
+.contact-us .contact { position: relative; margin-top: 20px; }
+.contact-us .contact form { width: 590px; }
+.contact-us .contact form .from-group { margin-bottom: 20px; *zoom: 1; position: relative; }
+.contact-us .contact form .from-group:before, .contact-us .contact form .from-group:after { display: table; content: ""; }
+.contact-us .contact form .from-group:after { clear: both; }
+.contact-us .contact form .from-group .half { position: static; float: left; width: 50%; margin-bottom: 0px; }
+.contact-us .contact form .from-group .half input { width: 211px; }
+.contact-us .contact form .from-group .controls { margin-left: 0; float: right; }
+.contact-us .contact form .from-group textarea, .contact-us .contact form .from-group input { width: 506px; height: 20px; line-height: 20px; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 4px 6px; }
+.contact-us .contact form .from-group textarea:focus, .contact-us .contact form .from-group input:focus { border-color: #3aaedf; }
+.contact-us .contact form .from-group select { border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 4px 6px; height: 30px; width: 520px; }
+.contact-us .contact form .from-group select:focus { border-color: #3aaedf; }
+.contact-us .contact form .from-group textarea { height: 150px; }
+.contact-us .contact form .from-group label { float: left; text-align: right; display: block; width: 50px; line-height: 20px; padding-top: 5px; }
+.contact-us .contact form .from-group label.error-tips { display: none; color: #ea2020; left: 0; margin-left: 100%; position: absolute; top: 0; white-space: pre; padding-left: 10px; text-align: left; width: auto; }
+.contact-us .contact form .from-group.error textarea, .contact-us .contact form .from-group.error input, .contact-us .contact form .from-group.error select { border-color: #ea2020; }
+.contact-us .contact form .from-group.error label.error-tips { display: block; }
+.contact-us .contact form .bnt { padding: 0 18px; margin-left: 68px; }
+
+.join-tips { margin-top: 30px; font-size: 12px; color: #999; line-height: 1; }
+.join-tips i.icon { width: 20px; height: 20px; background-image: url(img/about.png?v=186); background-position:-0px -0px; vertical-align: bottom; margin-right: 10px; }
+.join-tips a { color: #999; text-decoration: underline; }
+
+.advisors ul { margin-left: -54px; margin-top: -35px; *zoom: 1; }
+.advisors ul:before, .advisors ul:after { display: table; content: ""; }
+.advisors ul:after { clear: both; }
+.advisors ul li { float: left; margin-left: 54px; margin-top: 35px; text-align: center; font-size: 12px; color: #444; }
+.advisors ul li img { width: 100px; height: 100px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.advisors ul li .name { margin-top: 20px; }
+.advisors ul li .time { margin-top: 5px; }
+.advisors p { font-size: 14px; color: #666; line-height: 1.5; text-indent: 28px; margin-bottom: 10px; }
+.advisors p b { font-weight: bold; margin-left: -28px; }
+.advisors p .b1 { font-size: 16px; }

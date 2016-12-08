@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "SourceHanSansK-Light";
+    src: url("SourceHanSansK-Light.eot"); /* IE9 */
+    src: url("SourceHanSansK-Light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("SourceHanSansK-Light.woff") format("woff"), /* chrome、firefox */
+    url("SourceHanSansK-Light.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("SourceHanSansK-Light.svg#SourceHanSansK-Light") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

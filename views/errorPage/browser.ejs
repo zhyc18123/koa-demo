@@ -1,0 +1,76 @@
+<%
+    var data = locals;
+%>
+
+<!doctype html>
+<html>
+<head>
+    <%- include ../components/loadjs -%>
+    <link rel="stylesheet" href="/css/page_error.css?v=<%=data.vars._resource_version%>"/>
+    <title>系统运维中</title>
+    <style>
+    .bs-title,dt{
+        margin-bottom: 10px;
+    }
+    dl{
+        text-align: center;
+    }
+    dd{
+        display: inline-block;
+        width:80px;
+        padding:5px;
+    }
+    dd a{
+        cursor:pointer;
+        text-decoration: underline;
+        color: #4499ff;
+    }
+    </style>
+</head>
+
+<body>
+    <%- include ../components/head -%>
+    <div class="error">
+        <div class="content">
+            <div class="page_error">
+                <div class="title_box">浏览器版本太低</div>
+                <div class="error_cBox">
+                    <img alt="" src="/images/page_error/erro-bg.png" alt="系统运维中">
+                </div>
+                <div style="font-size:18px;margin-top:0px;text-align:center;">
+                    <div class="bs-title">
+                        您的操作系统为：
+                        <%=data.vars.ua.os%> 
+                    </div>
+                    <div class="bs-title">
+                        您的浏览器版本为：
+                        <%=data.vars.ua.browser%>/<%=data.vars.ua.version%>
+                    </div>
+                    <dl>
+                        <dt>为了获得更好的浏览效果，推荐您下载安装以下任何一款更高性能的浏览器</dt>
+                        <%if(data.vars.ua.isWindows){%>
+                            <%if(data.vars.ua.source.indexOf('Windows NT 5.1')>-1){%>
+                                <dd><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">IE8</a></dd>
+                            <%}if(data.vars.ua.source.indexOf('Windows NT 6.0')>-1){%>
+                                <dd><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">IE9</a></dd>
+                            <%}else{%>
+                                <dd><a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">IE11</a></dd>
+                            <%}%>
+                        <%}else if(data.vars.ua.isMac){%>
+                            <dd><a href="https://support.apple.com/downloads/safari" target="_blank">Saferi</a></dd>
+                        <%}%>
+                        <dd><a href="http://www.google.cn/chrome/browser/desktop/index.html" target="_blank">Chrome</a></dd>
+                        <dd><a href="http://www.firefox.com.cn/" target="_blank">Firefox</a></dd>
+                        <dd><a href="http://download.oupeng.com/" target="_blank">Opera</a></dd>
+                    </dl>
+                </div>
+
+                <div class="btm1"></div>
+                <div class="btm2"></div> 
+            </div>
+        </div>
+
+    </div>
+    <%- include ../components/foot -%>
+</body>
+</html>
