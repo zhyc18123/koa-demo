@@ -15,11 +15,11 @@ conf			项目配置文件
 
 middleware		项目通用KOA中间件
 utils			通用辅助函数,ejs模版过滤器
-router			路由器文件
-controller		控制器文件
-provider		数据接口、静态数据文件、数据库连接等
-views			模板文件
-public			样式文件、图片及js脚本
+router			路由器文件,可按模块分出子文件夹
+controller		控制器文件,可按模块分出子文件夹
+provider		静态数据文件、数据接口、数据库连接等,可按模块分出子文件夹
+views			模板文件,可按模块分出子文件夹,views/component 内是供引用的模板碎片
+public			样式文件、图片及js脚本和其他可直接访问的简单静态页面,其中sass未编译样式文件, src内是未压缩样式和js ,dist已压缩样式和js
 
 
 

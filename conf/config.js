@@ -5,14 +5,15 @@ module.exports = {
     hosts: "0.0.0.0",
     port: 80,
     _resource_version: 1,
+    interfaceFile:"./conf/interface.json",
+    interfaceStatus:"online",
     debug:true,
     yunwei:false,//是否启用运维模式
     yunweiEndTime:'',//运维结束时间提示，比如 '2016/07/01 05:00:00',如果留空，默认为次日凌晨5时
     serverName:'www.wmzy.com',//正常情况下使用的官方域名
     vipRedirect:false,//是否启用vip专用通道
     vipHost:"vip.wmzy.com",//vip专用通道主機
-    interfaceFile:"./conf/interface.json",
-    interfaceStatus:"online",
+    
     /*redisOpt:{
         host:"192.168.1.33",
         port:6379,
