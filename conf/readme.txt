@@ -14,7 +14,7 @@ seo				seo使用到的 sitemap 文件，百度统计校验文件
 conf			项目配置文件
 
 middleware		项目通用KOA中间件
-utils			通用辅助函数
+utils			通用辅助函数,ejs模版过滤器
 router			路由器文件
 controller		控制器文件
 provider		数据接口、静态数据文件、数据库连接等
