@@ -9,6 +9,7 @@ module.exports = function(redisOption,cacheOption){
 }
 
 function RedisCacheClient(redisOption,cacheOption){
+	cacheVersion = "_v"+cacheOption.cacheVersion||1;
 	this.redisOption = redisOption;
 	this.cacheTime = cacheOption.cacheTime;
 	this.secret = cacheOption.secret;
@@ -55,24 +56,38 @@ RedisCacheClient.prototype.getClient = function*(){
 }
 
 RedisCacheClient.prototype.hexKey = function(key){
-	return crypto.createHash("md5").update(this.secret+key+cacheVersion).digest('hex');
+	return crypto.createHash("md5").update(this.secret+key).digest('hex');
 }
 
 RedisCacheClient.prototype.save = function*(key,value){
 	var redisClient = yield this.getClient();
 	key = this.hexKey(key);
-	value = JSON.stringify({v:value});
+	var data = JSON.stringify({value:value,version:cacheVersion});
 
-	yield redisClient.set(key,value);
+	yield redisClient.set(key,data);
 	redisClient.expire(key,this.cacheTime);
 }
 
 RedisCacheClient.prototype.get = function*(key){
 	var redisClient = yield this.getClient();
 	key = this.hexKey(key);
-	var value = yield redisClient.get(key);
-	value = JSON.parse(value);
-	value = value&&value.v;
-	 
+
+	var value = null;
+	var data = yield redisClient.get(key);
+	if(data){
+		data = JSON.parse(data);
+		if(data.version==cacheVersion){
+			value = data.value;
+		}else{
+			yield redisClient.del(key);
+		}
+	}
+	
 	return value;
+}
+
+RedisCacheClient.prototype.del = function*(key){
+	var redisClient = yield this.getClient();
+	key = this.hexKey(key);
+	yield redisClient.del(key);
 }

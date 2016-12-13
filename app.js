@@ -24,6 +24,7 @@ module.exports = {
     init: function() {
         var app = require('koa')();
         app.experimental = true; //allow ECMAScript 2016 (ES7)
+        app.proxy = true;//allow X-Forwarded-Host X-Forwarded-For X-Forwarded-Proto HTTP proxy header
 
         //初始化
         this.initDataInterface();

@@ -24,6 +24,7 @@ module.exports = {
     },
     sessionSecret:"fnm(8rb$g$)zn%&amg3srr&&s$kmi05-1wymm5(6lfa$7eicf7",
     cacheOption:{//用于接口缓存的配置
+        cacheVersion:"1",//缓存版本，修改该值会使现有缓存失效
         cacheTime:7*24*3600,
         secret:'redis.cache.www.wmzy.com'
     }*/
